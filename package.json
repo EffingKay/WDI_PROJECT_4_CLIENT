@@ -1,12 +1,12 @@
 {
-  "name": "angular-gulp-setup",
+  "name": "WDI PROJECT 4",
   "version": "1.0.0",
-  "description": "A example stack with gulp and angular",
+  "description": "No idea yet",
   "main": "index.js",
   "scripts": {
     "postinstall": "bower install && gulp deploy"
   },
-  "author": "Alex Chin <alex@alexchin.co.uk>",
+  "author": "Klaudia Rozgonyiova <rozgonyiova.k@gmail.com>",
   "license": "ISC",
   "gulp": {
     "srcDir": "src/",
@@ -50,7 +50,8 @@
     }
   },
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "forever": "^0.15.3"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
