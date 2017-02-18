@@ -3,5 +3,6 @@ angular
   .module('CardsAgainstHumanity', [
     'ui.router',
     'ngResource',
-    'angular-jwt'
+    'angular-jwt',
+    'ui.bootstrap'
   ]);
