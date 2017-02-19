@@ -7,7 +7,8 @@ function RoomsShowCtrl(API, $http, $stateParams, $resource) {
   const vm     = this;
   vm.room = {};
 
-  const Character = $resource(`${API}/rooms/:id`, { id: '@id' });
-  vm.room = Character.get($stateParams);
+  const Room = $resource(`${API}/rooms/:id`, { id: '@id' });
+  vm.room = Room.get($stateParams);
+
 
 }
