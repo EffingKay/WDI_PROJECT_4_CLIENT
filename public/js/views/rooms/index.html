@@ -1,5 +1,5 @@
 <h1>list of all game rooms</h1>
-<a ui-sref="roomsNew">Create new game</a>
+<button type="button" name="button"><a ui-sref="roomsNew">Create new game</a></button><br><br>
 <ul ng-repeat="room in roomsIndex.rooms">
-  <li> {{ room.title }} </li>
+  <li> <a ui-sref="roomsShow({ id: room.id })">{{ room.title }} </a></li>
 </ul>
