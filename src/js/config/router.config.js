@@ -1,6 +1,6 @@
 angular
-  .module('CardsAgainstHumanity')
-  .config(Router);
+.module('CardsAgainstHumanity')
+.config(Router);
 
 Router.$inject = ['$stateProvider', '$locationProvider', '$urlRouterProvider'];
 function Router($stateProvider, $locationProvider, $urlRouterProvider){
@@ -22,6 +22,12 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider){
     templateUrl: '/js/views/login.html',
     controller: 'LoginCtrl',
     controllerAs: 'login'
+  })
+  .state('usersIndex', {
+    url: '/users',
+    templateUrl: '/js/views/users/index.html',
+    controller: 'UsersIndexCtrl',
+    controllerAs: 'usersIndex'
   });
 
   $urlRouterProvider.otherwise('/');
