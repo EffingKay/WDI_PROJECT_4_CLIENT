@@ -1,2 +1,17 @@
 <h1>{{ roomsShow.room.title }}</h1>
 <button type="button"><a ui-sref="roomsIndex">Go Back</a></button>
+<button type="button" ng-click="roomsShow.cardsGenerator()">Start Game</button>
+
+<h2 ng-if="roomsShow.blackCard">Black Card:</h2>
+<h4>{{ roomsShow.blackCard.text }}</h4>
+<h6 ng-if="roomsShow.blackCard">Pick: {{ roomsShow.blackCard.pick }}</h6>
+
+<h2 ng-if="roomsShow.blackCard">Played White Cards:</h2>
+<div ng-repeat="whiteCardPicks in roomsShow.pickedWhiteCards">
+  <h4>{{ whiteCardPicks }}</h4>
+</div>
+
+<h2 ng-if="roomsShow.blackCard">Your White Cards:</h2>
+<div ng-repeat="whiteCard in roomsShow.whiteCards track by $index">
+  <h4 ng-click="roomsShow.pickWhiteCard($index)">{{ whiteCard }}</h4>
+</div>
