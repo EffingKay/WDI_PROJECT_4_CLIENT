@@ -4,10 +4,12 @@ angular
 
 CurrentUserService.$inject = ['TokenService', '$rootScope', 'User'];
 function CurrentUserService(TokenService, $rootScope, User) {
-  const self = this;
+  const self    = this;
+  const decoded = TokenService.decodeToken();
+
+  self.currentUser = {};
 
   self.getUser = () => {
-    const decoded = TokenService.decodeToken();
     if (decoded) {
       User
         .get({ id: decoded.id }).$promise
@@ -17,7 +19,9 @@ function CurrentUserService(TokenService, $rootScope, User) {
         });
     }
   };
+
   self.getUser();
+
   self.removeUser = () => {
     self.currentUser = null;
     TokenService.removeToken();

@@ -1,17 +1,50 @@
-<h1>{{ roomsShow.room.title }}</h1>
-<button type="button"><a ui-sref="roomsIndex">Go Back</a></button>
-<button type="button" ng-click="roomsShow.cardsGenerator()">Start Game</button>
-
-<h2 ng-if="roomsShow.blackCard">Black Card:</h2>
-<h4>{{ roomsShow.blackCard.text }}</h4>
-<h6 ng-if="roomsShow.blackCard">Pick: {{ roomsShow.blackCard.pick }}</h6>
-
-<h2 ng-if="roomsShow.blackCard">Played White Cards:</h2>
-<div ng-repeat="whiteCardPicks in roomsShow.pickedWhiteCards">
-  <h4>{{ whiteCardPicks }}</h4>
+<div>
+  {{ main.user.username }}
+  {{ roomsShow.token }}
+  <h1 ng-if="roomsShow.status.connected">Connected</h1>
+  <h1 ng-if="roomsShow.status.disconnected">Disconnected</h1>
+  <h1 ng-if="roomsShow.status.connecting">Disconnected</h1>
 </div>
 
-<h2 ng-if="roomsShow.blackCard">Your White Cards:</h2>
+<div class="clearfix">
+  <h1 class="black_card">{{ roomsShow.room.black_card }}</h1>
+  <h2>{{ roomsShow.room.pick }}</h2>
+</div>
+
+<hr>
+
+<div class="clearfix">
+  <div class="white_card" ng-repeat="card in roomsShow.room.cards track by $index">{{ card.content }}</div>
+</div>
+
+<h2 ng-init="roomsShow.whiteCardsGenerator()">Your White Cards:</h2>
+<div ng-repeat="whiteCard in roomsShow.whiteCards track by $index">
+  <h4 ng-click="roomsShow.chooseCard(whiteCard, main.user)">{{ whiteCard }}</h4>
+</div>
+
+
+
+
+
+
+
+<!-- <h1>{{ roomsShow.room.title }}</h1>
+<h4>Number of players: ????</h4>
+<button type="button" ng-click="roomsShow.closeSocket()"><a ui-sref="roomsIndex">Go Back</a></button>
+<button type="button" ng-click="roomsShow.createNewBlackCard()">New round</button> -->
+
+<!-- <h2 ng-if="roomsShow.blackCard">Black Card:</h2>
+<h4>{{ roomsShow.blackCard.text }}</h4>
+<h6 ng-if="roomsShow.blackCard">Pick: {{ roomsShow.blackCard.pick }}</h6> -->
+
+<!-- <h2>Black Card: </h2>
+<h4>{{ roomsShow.blackCard.content }}</h4>
+<h2>Played White Cards:</h2>
+<div ng-repeat="played in roomsShow.pickedWhiteCards track by $index">
+  <h4>{{ played }}</h4>
+</div> -->
+
+<!-- <h2 ng-if="roomsShow.blackCard">Your White Cards:</h2>
 <div ng-repeat="whiteCard in roomsShow.whiteCards track by $index">
   <h4 ng-click="roomsShow.pickWhiteCard($index)">{{ whiteCard }}</h4>
-</div>
+</div> -->
