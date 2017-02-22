@@ -11,7 +11,7 @@ function LoginCtrl(User, CurrentUserService, $state) {
       .login(vm.user).$promise
       .then(() => {
         CurrentUserService.getUser();
-        $state.go('home');
+        $state.go('roomsIndex');
       }, err => {
   console.log(err);
       });

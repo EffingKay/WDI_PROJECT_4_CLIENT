@@ -9,8 +9,8 @@ function RoomsNewCtrl(Room, $state) {
   vm.create = () => {
     Room
       .create(vm.room).$promise
-      .then(() => {
-        $state.go('roomsIndex');
+      .then((response) => {
+        $state.go('roomsShow', { id: response.id, created: true });
       }, err => {
   console.log(err);
       });

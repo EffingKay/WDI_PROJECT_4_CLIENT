@@ -15,4 +15,7 @@ function MainCtrl($rootScope, CurrentUserService, $state) {
   vm.logout = () => {
     CurrentUserService.removeUser();
   };
+  $('.menu-collapsed').click(function() {
+  $(this).toggleClass('menu-expanded');
+});
 }
