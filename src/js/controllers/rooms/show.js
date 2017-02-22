@@ -74,7 +74,8 @@ console.log(vm.user, vm.room.cards)
             content: card,
             color: "white",
             user_id: userId,
-            token: vm.token
+            token: vm.token,
+            votes: 0
           }
 
           // ngActionCable will always prefix by message?!
@@ -103,8 +104,15 @@ console.log(vm.user, vm.room.cards)
     }
 
 
+    vm.voteForFunniest = (card) => {
 
+console.log(card)
 
+      // ngActionCable will always prefix by message?!
+      // consumer.send(message, action); ?
+      consumer.send(card, 'vote_for_card');
+
+    }
 
 
 

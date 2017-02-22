@@ -2,6 +2,7 @@ button,
 .btn.btn-primary {
   text-transform: uppercase;
   color: $black;
+  border-radius: 5px;
   border: 2px solid $black;
   background-color: $white;
   -webkit-box-shadow: 3px 5px 0px rgba(0, 0, 0, .85);

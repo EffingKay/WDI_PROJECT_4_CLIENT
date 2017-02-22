@@ -13,6 +13,7 @@ function RegisterCtrl(User, CurrentUserService, $state){
         CurrentUserService.getUser();
         $state.go('roomsIndex');
       }, err => {
+        vm.error = 'Please try again';
   console.log(err);
       });
   };

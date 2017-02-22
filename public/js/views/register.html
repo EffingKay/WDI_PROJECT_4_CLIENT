@@ -1,4 +1,6 @@
 <h1>Register</h1>
+<h5 ng-if="login.error">{{ login.error }}</h5>
+
 <form ng-submit="register.register()">
   <div class="form-group">
     <input class="form-control" type="text" name="username" ng-model="register.user.username" placeholder="Username">

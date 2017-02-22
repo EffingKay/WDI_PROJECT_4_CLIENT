@@ -1,65 +1,34 @@
-<!-- <div ng-init="roomsShow.checkForPlayed(main.user.id)"> -->
-  <h3 ng-if="roomsShow.status.connected">{{ main.user.username }} is connected</h3>
-  <h3 ng-if="roomsShow.status.disconnected">{{ main.user.username }} is disconnected</h3>
-  <h3 ng-if="roomsShow.status.connecting">{{ main.user.username }} is disconnected but connecting</h3>
-<!-- </div> -->
-<h4 ng-if="roomsShow.room.cards.length > 1 && !roomsShow.played">{{ roomsShow.room.cards.length }} players played this game</h4>
-<h4 ng-if="roomsShow.room.cards.length == 1 && !roomsShow.played">{{ roomsShow.room.cards.length }} player played this game. Join him!</h4>
-<h4 ng-if="roomsShow.room.cards.length == 0">Be first to play this game!</h4>
-<h4 ng-if="roomsShow.played">You already played this game!</h4>
+<button type="button"><a ui-sref="roomsIndex">back to game list</a></button>
+
+<h3 ng-if="roomsShow.status.connected">{{ main.user.username }} is connected</h3>
+<h3 ng-if="roomsShow.status.disconnected">{{ main.user.username }} is disconnected</h3>
+<h3 ng-if="roomsShow.status.connecting">{{ main.user.username }} is disconnected but connecting</h3>
+
 
 <div class="clearfix">
   <p class="black_card">{{ roomsShow.room.black_card }} <br>
     <span ng-if="roomsShow.room.pick > 1" class="pick">Pick {{ roomsShow.room.pick }}</span>
   </p>
 </div>
-<!-- <h4>Pick: {{ roomsShow.room.pick }}</h4> -->
-<!-- Only show this ^ if pick is more than 1 and inside the card -->
-
 
 <hr>
-
+<h4 ng-if="roomsShow.room.cards.length > 1 && !roomsShow.played">{{ roomsShow.room.cards.length }} players played this game</h4>
+<h4 ng-if="roomsShow.room.cards.length == 1 && !roomsShow.played">{{ roomsShow.room.cards.length }} player played this game. Join him!</h4>
+<h4 ng-if="roomsShow.room.cards.length == 0">Be first to play this game!</h4>
+<h4 ng-if="roomsShow.played">You already played this game! Now vote for the funniest card. And don't be a dick and vote for yourself.</h4>
 <div class="clearfix">
   <div class="white_card"
-    ng-repeat="card in roomsShow.room.cards track by $index"
-    ng-if="roomsShow.played">
-    {{ card.content }}
-  </div>
+  ng-repeat="card in roomsShow.room.cards track by $index"
+  ng-click="roomsShow.voteForFunniest(card)"
+  ng-if="roomsShow.played">
+  {{ card.content }}
+</div>
 </div>
 
-<h2  ng-hide="roomsShow.played">Your White Cards:</h2>
+<h2 ng-hide="roomsShow.played">Your<br>White<br>Cards:</h2>
 <div class="white_card"
-  ng-hide="roomsShow.played"
-  ng-click="roomsShow.chooseCard(whiteCard, main.user.id)"
-  ng-repeat="whiteCard in roomsShow.whiteCards track by $index">
-  {{ whiteCard }}
-  <!-- <h4 ng-click="roomsShow.chooseCard(whiteCard, main.user)">{{ whiteCard }}</h4> -->
+ng-hide="roomsShow.played"
+ng-click="roomsShow.chooseCard(whiteCard, main.user.id)"
+ng-repeat="whiteCard in roomsShow.whiteCards track by $index">
+{{ whiteCard }}
 </div>
-
-<!-- {{ main.user.username }}
-{{ roomsShow.token }} -->
-
-
-
-
-
-<!-- <h1>{{ roomsShow.room.title }}</h1>
-<h4>Number of players: ????</h4>
-<button type="button" ng-click="roomsShow.closeSocket()"><a ui-sref="roomsIndex">Go Back</a></button>
-<button type="button" ng-click="roomsShow.createNewBlackCard()">New round</button> -->
-
-<!-- <h2 ng-if="roomsShow.blackCard">Black Card:</h2>
-<h4>{{ roomsShow.blackCard.text }}</h4>
-<h6 ng-if="roomsShow.blackCard">Pick: {{ roomsShow.blackCard.pick }}</h6> -->
-
-<!-- <h2>Black Card: </h2>
-<h4>{{ roomsShow.blackCard.content }}</h4>
-<h2>Played White Cards:</h2>
-<div ng-repeat="played in roomsShow.pickedWhiteCards track by $index">
-  <h4>{{ played }}</h4>
-</div> -->
-
-<!-- <h2 ng-if="roomsShow.blackCard">Your White Cards:</h2>
-<div ng-repeat="whiteCard in roomsShow.whiteCards track by $index">
-  <h4 ng-click="roomsShow.pickWhiteCard($index)">{{ whiteCard }}</h4>
-</div> -->

@@ -13,6 +13,7 @@ function LoginCtrl(User, CurrentUserService, $state) {
         CurrentUserService.getUser();
         $state.go('roomsIndex');
       }, err => {
+        vm.error = 'Invalid e-mail or password';
   console.log(err);
       });
   };
