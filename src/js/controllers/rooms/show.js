@@ -101,7 +101,7 @@ function RoomsShowCtrl(
 console.log(message);
         // ngActionCable will always prefix by message
         consumer.send(message, 'vote_for_card');
-        vm.voterMessage = 'Thank you for your vote! Vote for more if you want, I don\'t care';
+        vm.voterMessage = 'Thank you for your vote! Vote for more if you want, I don\'t give a shit.';
       }
     });
 
@@ -111,6 +111,5 @@ console.log(message);
       });
       return playersCards.length ? true : false;
     }
-
 
 }
