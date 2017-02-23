@@ -42,6 +42,7 @@ function RoomsShowCtrl(
       const index = randomNumberGenerator(window.cards.whiteCards);
       vm.whiteCards.push(window.cards.whiteCards[index]);
     }
+
   };
 
   // If ActionCableConfig.debug
@@ -68,7 +69,6 @@ function RoomsShowCtrl(
     .subscribe(callback)
     .then(function(){
       vm.chooseCard = (card, userId) => {
-
           const message = {
             content: card,
             color: "white",
@@ -76,6 +76,7 @@ function RoomsShowCtrl(
             token: vm.token,
             votes: 0
           }
+// console.log(message);
 
           // ngActionCable will always prefix by message?!
           // consumer.send(message, action); ?
@@ -84,8 +85,6 @@ function RoomsShowCtrl(
           // Prevent that user from choosing again
           vm.whiteCards = [];
           vm.played = true;
-
-
       }
 
       $scope.$on('$destroy', function() {
@@ -104,24 +103,12 @@ function RoomsShowCtrl(
 
 
     vm.voteForFunniest = (card) => {
-
-console.log(card)
-// Object
-// color:"white"
-// content:"A spontaneous conga line."
-// id:6
-// pick:null
-// room_id:6
-      let newVotes = card.votes + 1;
+console.log('You voted for:', card);
       const message = {
-        content: card.content,
-        color: card.color,
         id: card.id,
-        room_id: 6,
-        user_id : card.user_id,
-        votes: newVotes
+        votes: ++card.votes
       }
-
+      vm.voterMessage = 'Thank you for your vote! Vote for more if you want, I don\'t care';
       // ngActionCable will always prefix by message
       consumer.send(message, 'vote_for_card');
 

@@ -17,9 +17,10 @@
 <h4 ng-if="roomsShow.room.cards.length == 0">Be first to play this game!</h4>
 <h4 ng-if="roomsShow.played">You already played this game! Now vote for the funniest card.
   <br>Don't be a dick, vote for someone else.</h4>
+<h4>{{ roomsShow.voterMessage }}</h4>
 <div class="clearfix">
   <div class="white_card"
-  ng-repeat="card in roomsShow.room.cards track by $index"
+  ng-repeat="card in roomsShow.room.cards | orderBy:'-votes' track by $index"
   ng-click="roomsShow.voteForFunniest(card)"
   ng-if="roomsShow.played">
   {{ card.content }}
@@ -28,8 +29,8 @@
 
 <h2 ng-hide="roomsShow.played">Your<br>White<br>Cards:</h2>
 <div class="white_card"
-ng-hide="roomsShow.played"
-ng-click="roomsShow.chooseCard(whiteCard, main.user.id)"
-ng-repeat="whiteCard in roomsShow.whiteCards track by $index">
-{{ whiteCard }}
+  ng-hide="roomsShow.played"
+  ng-click="roomsShow.chooseCard(whiteCard, main.user.id)"
+  ng-repeat="whiteCard in roomsShow.whiteCards track by $index">
+  {{ whiteCard }}
 </div>
