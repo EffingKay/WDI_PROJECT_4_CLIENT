@@ -92,6 +92,17 @@ function RoomsShowCtrl(
           console.log('You\'ve left the room');
         });
       });
+
+      vm.voteForFunniest = (card) => {
+        const message = {
+          id: card.id,
+          votes: ++card.votes
+        }
+console.log(message);
+        // ngActionCable will always prefix by message
+        consumer.send(message, 'vote_for_card');
+        vm.voterMessage = 'Thank you for your vote! Vote for more if you want, I don\'t care';
+      }
     });
 
     vm.checkIfPlayedBefore = (cardsArr, userId) => {
@@ -99,19 +110,6 @@ function RoomsShowCtrl(
         return card.user_id = userId;
       });
       return playersCards.length ? true : false;
-    }
-
-
-    vm.voteForFunniest = (card) => {
-console.log('You voted for:', card);
-      const message = {
-        id: card.id,
-        votes: ++card.votes
-      }
-      vm.voterMessage = 'Thank you for your vote! Vote for more if you want, I don\'t care';
-      // ngActionCable will always prefix by message
-      consumer.send(message, 'vote_for_card');
-
     }
 
 
