@@ -17,7 +17,6 @@ function RoomsShowCtrl(
 
   Room.get($stateParams).$promise.then(data => {
     vm.room = data;
-console.log(vm.user, vm.room.cards)
     if (vm.checkIfPlayedBefore(vm.room.cards, vm.user.id)) {
       vm.played = true;
       return;
@@ -107,95 +106,26 @@ console.log(vm.user, vm.room.cards)
     vm.voteForFunniest = (card) => {
 
 console.log(card)
+// Object
+// color:"white"
+// content:"A spontaneous conga line."
+// id:6
+// pick:null
+// room_id:6
+      let newVotes = card.votes + 1;
+      const message = {
+        content: card.content,
+        color: card.color,
+        id: card.id,
+        room_id: 6,
+        user_id : card.user_id,
+        votes: newVotes
+      }
 
-      // ngActionCable will always prefix by message?!
-      // consumer.send(message, action); ?
-      consumer.send(card, 'vote_for_card');
+      // ngActionCable will always prefix by message
+      consumer.send(message, 'vote_for_card');
 
     }
 
 
-
-
-
-
-
-//   vm.room = {};
-//   vm.room = Room.get($stateParams);
-//
-//   vm.whiteCards = [];
-//   vm.pickedWhiteCards = [];
-//   // vm.pickWhiteCard = pickWhiteCard;
-//   //
-//
-//   //
-//   // function cardsGenerator() {
-//   //   vm.pickedWhiteCards = [];
-//   //   blackCardGenerator();
-//   //   whiteCardsGenerator();
-//   // }
-//   //
-//   // function blackCardGenerator() {
-//   //   const index = randomNumberGenerator(window.cards.blackCards);
-//   //   vm.blackCard =  window.cards.blackCards[index];
-//   //   return vm.blackCard;
-//   // }
-//   //
-//
-//   //
-//   // function pickWhiteCard($index) {
-//   //   vm.pickedWhiteCards = [];
-//   //   vm.pickedWhiteCards.push(vm.whiteCards[$index]);
-//   // }
-//
-//
-// // action cable
-// //   const consumer = new ActionCableChannel('RoomChannel', { room: $stateParams.id });
-// // console.log(consumer)
-//
-//   let i = 0;
-//   function createNewBlackCard() {
-//     vm.blackCard = {
-//       content: window.cards.blackCards[i].text,
-//       color: 'black',
-//       pick: window.cards.blackCards[i].pick,
-//       room_id: $stateParams.id
-//     };
-//     Card.create(vm.blackCard).$promise
-//       .then(() => {
-//         console.log(`Card created: ${vm.blackCard}`);
-//       });
-//     i++;
-//   }
-//
-//   vm.createNewBlackCard = createNewBlackCard;
-//
-//   // var callback = function(message){
-//   //   console.log(message)
-//   // };
-//   // consumer.subscribe(callback).then(function(){
-//   //   vm.chooseWhiteCard = function(card){
-//   //     vm.pickedWhiteCards.push(card);
-//   //     vm.playedWhiteCard = {
-//   //       content: card,
-//   //       color: 'white',
-//   //       room_id: $stateParams.id
-//   //     };
-//   //     Card.create(vm.playedWhiteCard);
-//   //     consumer.send(card, 'choose_white_card');
-//   //   };
-//   // });
-//
-// console.log(Socket)
-//
-//
-//   vm.chooseWhiteCard = function(card){
-//     vm.pickedWhiteCards.push(card);
-//     vm.playedWhiteCard = {
-//       content: card,
-//       color: 'white',
-//       room_id: $stateParams.id
-//     };
-//     // Card.create(vm.playedWhiteCard);
-//   };
 }

@@ -15,7 +15,8 @@
 <h4 ng-if="roomsShow.room.cards.length > 1 && !roomsShow.played">{{ roomsShow.room.cards.length }} players played this game</h4>
 <h4 ng-if="roomsShow.room.cards.length == 1 && !roomsShow.played">{{ roomsShow.room.cards.length }} player played this game. Join him!</h4>
 <h4 ng-if="roomsShow.room.cards.length == 0">Be first to play this game!</h4>
-<h4 ng-if="roomsShow.played">You already played this game! Now vote for the funniest card. And don't be a dick and vote for yourself.</h4>
+<h4 ng-if="roomsShow.played">You already played this game! Now vote for the funniest card.
+  <br>Don't be a dick, vote for someone else.</h4>
 <div class="clearfix">
   <div class="white_card"
   ng-repeat="card in roomsShow.room.cards track by $index"
