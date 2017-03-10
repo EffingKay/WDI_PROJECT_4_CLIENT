@@ -4,6 +4,8 @@ Case study of my fourth project made for GA.
 
 Create a MEAN app with user authentication and deploy it to Heroku.
 
+<a href="http://cards-a-h.herokuapp.com/" target="_blank">DEMO</a> &nbsp; &nbsp; &nbsp;
+
 <a href="https://github.com/EffingKay/WDI_PROJECT_4_API" target="_blank">API for this project</a> &nbsp; &nbsp; &nbsp;
 
 ## What was used
