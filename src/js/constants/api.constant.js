@@ -1,3 +1,3 @@
 angular
   .module('CardsAgainstHumanity')
-  .constant('API', 'https://cards-against-humanity-api.herokuapp.com/');
+  .constant('API', 'https://cards-against-humanity-api.herokuapp.com');
