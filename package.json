@@ -4,7 +4,7 @@
   "description": "No idea yet",
   "main": "index.js",
   "scripts": {
-    "postinstall": "bower install && gulp deploy"
+    "postinstall": ""
   },
   "author": "Klaudia Rozgonyiova <rozgonyiova.k@gmail.com>",
   "license": "ISC",
